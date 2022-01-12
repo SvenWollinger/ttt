@@ -8,7 +8,7 @@ public class TTT {
     private static int programCounter = 0;
 
     public static void main(String[] args) {
-        System.out.println("Guten Tag bei TTT 2022 Pre Release 0.0.0.2.");
+        System.out.println("Guten Tag bei TTT 2022 Pre Release 0.0.0.2!");
 
         while(!isGameWon()) {
             if(placeStone()) {
