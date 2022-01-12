@@ -11,14 +11,15 @@ public class TTT {
         System.out.println("Guten Tag bei TTT 2022 Pre Release 0.0.0.1.");
 
         while(!isGameWon()) {
-            placeStone();
-            paintGame();
+            if(placeStone()) {
+                paintGame();
 
-            if (isGameWon()) {
-                System.out.println("Spiel gewonnen.");
-                break;
+                if (isGameWon()) {
+                    System.out.println("Spiel gewonnen.");
+                    break;
+                }
+                programCounter++;
             }
-            programCounter++;
         }
     }
 
@@ -42,8 +43,8 @@ public class TTT {
             for(int col = 0; col < 3; col++) {
                 char stone = game[row][col];
 
-                if (stone != '\0') {
-                    System.out.print(" " + game[row][col] + " ");
+                if (stone != 0) {
+                    System.out.print(" " + stone + " ");
                 } else {
                     System.out.print(" _ ");
                 }
@@ -52,10 +53,9 @@ public class TTT {
         }
     }
 
-    public static void placeStone() {
+    public static boolean placeStone() {
         // TODO - validation
         //  is field empty?
-        //  is field on board?
         System.out.println("Bitte setze deinen Stein.");
 
         System.out.print("In welcher Zeile möchtest du deinen Stein setzen? (1 - 3) ");
@@ -66,10 +66,16 @@ public class TTT {
         int col = scanner.nextInt();
         --col;
 
-        if (programCounter % 2 == 0) {
-            game[row][col] = 'X';
+        if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
+            if (programCounter % 2 == 0) {
+                game[row][col] = 'X';
+            } else {
+                game[row][col] = 'O';
+            }
+
+            return true;
         } else {
-            game[row][col] = 'O';
+            return false;
         }
     }
 
