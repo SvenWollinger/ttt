@@ -10,27 +10,16 @@ public class TTT {
     public static void main(String[] args) {
         System.out.println("Guten Tag bei TTT 2022 Pre Release 0.0.0.1.");
 
-        // Schritt 1: Eingabe Player 1
-        while(programCounter < 9) {
+        while(!isGameWon()) {
             placeStone();
             paintGame();
+
             if (isGameWon()) {
                 System.out.println("Spiel gewonnen.");
-                Math.round(3.31);
-                return;
+                break;
             }
             programCounter++;
         }
-
-
-
-
-        // Schritt 2: Ausgabe Spielfeld
-        // Schritt 3: Eingabe Player 2
-        // Schritt 4: Ausgabe Spielfeld
-        // Schritt 5: Eingabe Player 1
-        // Schritt 6: Ausgabe Spielfeld
-        // Schritt 7...
     }
 
     public static void generateFakeGame() {
@@ -49,10 +38,15 @@ public class TTT {
     }
 
     public static void paintGame() {
-        // TODO empty elements
         for(int row = 0; row < 3; row++) {
             for(int col = 0; col < 3; col++) {
-                System.out.print(" " + game[row][col] + " ");
+                char stone = game[row][col];
+
+                if (stone != '\0') {
+                    System.out.print(" " + game[row][col] + " ");
+                } else {
+                    System.out.print(" _ ");
+                }
             }
             System.out.println();
         }
