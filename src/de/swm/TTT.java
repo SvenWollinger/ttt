@@ -23,21 +23,6 @@ public class TTT {
         }
     }
 
-    public static void generateFakeGame() {
-        //        X | X | O
-        //        X | O | X
-        //        X | O | X
-        game[0][0] = 'X';
-        game[1][0] = 'O';
-        game[2][0] = 'X';
-        game[0][1] = 'X';
-        game[1][1] = 'O';
-        game[2][1] = 'O';
-        game[0][2] = 'O';
-        game[1][2] = 'X';
-        game[2][2] = 'X';
-    }
-
     public static void paintGame() {
         for(int row = 0; row < 3; row++) {
             for(int col = 0; col < 3; col++) {
@@ -54,8 +39,6 @@ public class TTT {
     }
 
     public static boolean placeStone() {
-        // TODO - validation
-        //  is field empty?
         System.out.println("Bitte setze deinen Stein.");
 
         System.out.print("In welcher Zeile möchtest du deinen Stein setzen? (1 - 3) ");
@@ -67,16 +50,18 @@ public class TTT {
         --col;
 
         if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
-            if (programCounter % 2 == 0) {
-                game[row][col] = 'X';
-            } else {
-                game[row][col] = 'O';
-            }
+            if (game[row][col] == 0) {
+                if (programCounter % 2 == 0) {
+                    game[row][col] = 'X';
+                } else {
+                    game[row][col] = 'O';
+                }
 
-            return true;
-        } else {
-            return false;
+                return true;
+            }
         }
+
+        return false;
     }
 
     public static boolean isGameWon() {
