@@ -3,7 +3,7 @@ package de.swm;
 import java.util.Scanner;
 
 public class TTT {
-    private static char game[][] = new char[3][3];
+    private static char[][] game = new char[3][3];
     private static Scanner scanner = new Scanner(System.in);
     private static int programCounter = 0;
 
@@ -83,9 +83,7 @@ public class TTT {
         if (game[1][1] == 'X' || game[1][1] == 'O') {
             if (game[0][0] == game[1][1] && game[1][1] == game[2][2]) {
                 return true;
-            } else if (game[0][2] == game[1][1] && game[1][1] == game[2][0]) {
-                return true;
-            }
+            } else return game[0][2] == game[1][1] && game[1][1] == game[2][0];
         }
 
         return false;
